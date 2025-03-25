@@ -100,12 +100,18 @@ Masukkan uang atau beli minuman (1000, 2000, 5000, 10000, A, B, C): c
 Pilihan minuman tidak valid. Status: REJECTED
 Lintasan DFA: S0 → S10000
 
+Masukkan uang atau beli minuman (1000, 2000, 5000, 10000, A, B, C): 100000
+Harap masukkan nominal yang dapat diterima! (Pecahan 1000, 2000, 5000 atau 10000)
+Current state: S10000
+Masukkan uang atau beli minuman (1000, 2000, 5000, 10000, A, B, C): # meminta memasukkan kembali dengan input yang sesuai
+
 ```
 
 ## Catatan
 - Program hanya menerima nominal uang tertentu.
 - Batas maksimum saldo adalah Rp10.000.
 - Program akan berhenti setelah minuman berhasil dibeli.
+- Jika format input tidak sesuai, maka program akan menampilkan output: "Pilihan minuman tidak valid. Status: REJECTED" atau "Harap masukkan nominal yang dapat diterima! (Pecahan 1000, 2000, 5000 atau 10000)"
 
 ## Lisensi
 Program ini bebas digunakan dan dimodifikasi sesuai kebutuhan.
