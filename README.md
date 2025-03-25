@@ -92,6 +92,7 @@ Kembalian: 2000
 Terima kasih! Silakan ambil minuman Anda.
 
 - Kasus jika format input tidak sesuai dengan syarat
+
 Masukkan uang atau beli minuman (1000, 2000, 5000, 10000, A, B, C): 10000
 ON: Minuman A, Minuman B, Minuman C
 Saldo saat ini: Rp10000
@@ -105,13 +106,32 @@ Harap masukkan nominal yang dapat diterima! (Pecahan 1000, 2000, 5000 atau 10000
 Current state: S10000
 Masukkan uang atau beli minuman (1000, 2000, 5000, 10000, A, B, C): # meminta memasukkan kembali dengan input yang sesuai
 
+Masukkan uang atau beli minuman (1000, 2000, 5000, 10000, A, B, C): 2000
+Saldo saat ini: Rp2000
+Lintasan DFA: S0 → S2000
+Masukkan uang atau beli minuman (1000, 2000, 5000, 10000, A, B, C): 5000
+ON: Minuman A, Minuman B, Minuman C
+Saldo saat ini: Rp7000
+Lintasan DFA: S0 → S2000 → S7000
+Masukkan uang atau beli minuman (1000, 2000, 5000, 10000, A, B, C): B, C
+Pilihan minuman tidak valid. Status: REJECTED
+Lintasan DFA: S0 → S2000 → S7000
+
+Masukkan uang atau beli minuman (1000, 2000, 5000, 10000, A, B, C): 5000
+ON: Minuman A, Minuman B
+Saldo saat ini: Rp5000
+Lintasan DFA: S0 → S5000
+Masukkan uang atau beli minuman (1000, 2000, 5000, 10000, A, B, C): C
+Saldo tidak cukup. Status: REJECTED
+Lintasan DFA: S0 → S5000
 ```
 
 ## Catatan
 - Program hanya menerima nominal uang tertentu.
 - Batas maksimum saldo adalah Rp10.000.
 - Program akan berhenti setelah minuman berhasil dibeli.
-- Jika format input tidak sesuai, maka program akan menampilkan output: "Pilihan minuman tidak valid. Status: REJECTED" atau "Harap masukkan nominal yang dapat diterima! (Pecahan 1000, 2000, 5000 atau 10000)"
+- Jika format input tidak sesuai, maka program akan menampilkan output: "Pilihan minuman tidak valid. Status: REJECTED" atau "Harap masukkan nominal yang dapat diterima! (Pecahan 1000, 2000, 5000 atau 10000)".
+- Hanya bisa dilakukan pembelian satu per satu.
 
 ## Lisensi
 Program ini bebas digunakan dan dimodifikasi sesuai kebutuhan.
