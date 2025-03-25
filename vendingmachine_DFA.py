@@ -44,24 +44,31 @@ class DFA:
     def masukan_uang(self, amount):
         if amount not in {1000, 2000, 5000, 10000}:
             print("Harap masukkan nominal yang dapat diterima! (Pecahan 1000, 2000, 5000 atau 10000)")
+            print(f"Current state: {self.current_state}")
             return
         if self.balance + amount > 10000:
             print("Jumlah yang diterima melebihi batas maksimal Rp10000!")
+            print(f"Current state: {self.current_state}")
             return
-
-        self.balance += amount
-        next_state = self.transitions.get(self.current_state, {}).get(str(amount), self.current_state)
         
-        if next_state != self.current_state:
+        # update saldo dan status mesin
+        self.balance += amount
+        # transisi ke status berikutnya
+        next_state = self.transitions.get(self.current_state, {}).get(str(amount), None)
+        
+        if next_state and next_state in self.states:
             self.current_state = next_state
             self.trace.append(self.current_state)
+        else:
+            print("Transisi tidak valid, tetap di state saat ini.")
         
-        available_drinks = self.available_dibeli()
+        available_drinks = self.minuman_available()
         if available_drinks:
             print(f"ON: {', '.join(available_drinks)}")
         print(f"Saldo saat ini: Rp{self.balance}")
-
-    def available_dibeli(self):
+        print(f"Lintasan DFA: {' → '.join(self.trace)}")
+            
+    def minuman_available(self):
         available = []
         if self.balance >= 3000: available.append("Minuman A")
         if self.balance >= 4000: available.append("Minuman B")
@@ -79,10 +86,10 @@ class DFA:
                 print("Terima kasih! Silakan ambil minuman Anda.")
                 exit()
             else:
-                print("Saldo tidak cukup. Status: REJECTED")
-                
+                print("Saldo tidak cukup. Status: REJECTED")       
         else:
             print("Pilihan minuman tidak valid. Status: REJECTED")
+        print(f"Lintasan DFA: {' → '.join(self.trace)}")
             
         
 
