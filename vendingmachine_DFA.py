@@ -10,6 +10,9 @@ class DFA:
         self.load_config(config_file) # load konfigurasi mesin
         self.balance = 0  # saldo uang yang diterima mesin
         self.current_state = self.start_state # status mesin saat ini
+        if self.start_state not in self.states:
+            raise ValueError("Start State Tidak Terdefinisi") #memastikan start state valid
+
         self.trace = [self.current_state] # jejak status mesin
 
     def load_config(self, file_name): # load konfigurasi mesin
